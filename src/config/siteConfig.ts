@@ -110,23 +110,23 @@ export const siteConfig = {
   clinicalResults: [
     {
       id: 1,
-      title: 'Harmonização e Contorno Facial',
-      area: 'Proporções e Linhas Mandibulares',
+      title: 'Preenchimento Labial e Hidratação',
+      area: 'Contorno e Projeção Labial',
       description:
-        'Adequação de proporções faciais com foco em sustentação discreta e realce da anatomia individual da paciente.',
-      beforeImage: '/images/results/case1-before.svg',
-      afterImage: '/images/results/case1-after.svg',
+        'Planejamento e volumização labial com foco em contorno anatômico natural, eversão suave do lábio superior e acabamento hidratado.',
+      beforeImage: '/images/results/case1-before.png',
+      afterImage: '/images/results/case1-after.png',
       beforeLabel: 'Antes',
       afterLabel: 'Depois',
     },
     {
       id: 2,
-      title: 'Bioestímulo e Firmeza Tissular',
-      area: 'Densidade e Textura Cutânea',
+      title: 'Escultura Labial e Perfil Facial',
+      area: 'Harmonização de Perfil',
       description:
-        'Aporte de firmeza progressiva e atenuação da flacidez tecidual através de estímulo biológico celular.',
-      beforeImage: '/images/results/case2-before.svg',
-      afterImage: '/images/results/case2-after.svg',
+        'Equilíbrio e alinhamento estético do perfil com projeção equilibrada dos lábios em simetria com as proporções nasomentonianas.',
+      beforeImage: '/images/results/case2-before.png',
+      afterImage: '/images/results/case2-after.png',
       beforeLabel: 'Antes',
       afterLabel: 'Depois',
     },

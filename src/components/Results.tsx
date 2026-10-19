@@ -115,6 +115,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             userSelect: 'none',
             cursor: 'ew-resize',
             backgroundColor: '#F8F5F1',
+            containerType: 'inline-size',
           }}
         >
           {/* Imagem de DEPOIS (camada inferior completa) */}
@@ -153,7 +154,8 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
                 top: 0,
                 left: 0,
                 height: '100%',
-                width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',
+                width: '100cqw',
+                minWidth: '100%',
                 maxWidth: 'none',
                 objectFit: 'cover',
               }}
