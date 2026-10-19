@@ -310,33 +310,13 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
         </div>
       )}
 
-      {/* Descrição sem ponto final */}
-      <div
-        style={{
-          padding: '0.875rem 1.125rem',
-          backgroundColor: '#FFFFFF',
-          flexGrow: 1,
-        }}
-      >
-        <p
-          style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: '0.8125rem',
-            lineHeight: 1.55,
-            color: 'var(--color-secondary)',
-            fontWeight: 400,
-          }}
-        >
-          {item.description}
-        </p>
-      </div>
     </div>
   );
 };
 
 export const Results: React.FC = () => {
-  // Padrão: split (duas imagens ao lado uma da outra)
-  const [viewMode, setViewMode] = useState<'slider' | 'split'>('split');
+  // Padrão: slider (modo deslizante interativo)
+  const [viewMode, setViewMode] = useState<'slider' | 'split'>('slider');
 
   return (
     <section
@@ -418,7 +398,7 @@ export const Results: React.FC = () => {
               marginBottom: '1.25rem',
             }}
           >
-            Duas imagens ao lado para comparação imediata de naturalidade e técnica
+            Deslize para comparar a evolução de cada detalhe com naturalidade e técnica
           </p>
 
           {/* Alternador de Modo de Exibição */}
@@ -433,27 +413,6 @@ export const Results: React.FC = () => {
               border: '1px solid rgba(112, 84, 73, 0.12)',
             }}
           >
-            <button
-              type="button"
-              onClick={() => setViewMode('split')}
-              aria-label="Visualização lado a lado"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.4rem 0.8rem',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                letterSpacing: '0.04em',
-                borderRadius: '2px',
-                backgroundColor: viewMode === 'split' ? 'var(--color-primary)' : 'transparent',
-                color: viewMode === 'split' ? '#FFFFFF' : 'var(--color-secondary)',
-              }}
-            >
-              <Columns size={13} />
-              Lado a Lado
-            </button>
-
             <button
               type="button"
               onClick={() => setViewMode('slider')}
@@ -473,6 +432,27 @@ export const Results: React.FC = () => {
             >
               <SlidersHorizontal size={13} />
               Deslizante
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setViewMode('split')}
+              aria-label="Visualização lado a lado"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.4rem 0.8rem',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                borderRadius: '2px',
+                backgroundColor: viewMode === 'split' ? 'var(--color-primary)' : 'transparent',
+                color: viewMode === 'split' ? '#FFFFFF' : 'var(--color-secondary)',
+              }}
+            >
+              <Columns size={13} />
+              Lado a Lado
             </button>
           </div>
         </div>
