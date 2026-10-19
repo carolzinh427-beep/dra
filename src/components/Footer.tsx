@@ -217,7 +217,7 @@ export const Footer: React.FC = () => {
               }}
             >
               <span>
-                © {new Date().getFullYear()} {siteConfig.doctor.name}. Todos os direitos reservados.
+                © {new Date().getFullYear()} {siteConfig.doctor.name} Todos os direitos reservados
               </span>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
@@ -298,12 +298,11 @@ export const Footer: React.FC = () => {
             </h3>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '1rem', color: '#555' }}>
               Este canal de comunicação destina-se exclusivamente à prestação de informações e
-              agendamento de consultas com a <strong>{siteConfig.doctor.name}</strong> ({siteConfig.doctor.credentials}).
+              agendamento de consultas com a <strong>{siteConfig.doctor.name}</strong> ({siteConfig.doctor.credentials})
             </p>
             <p style={{ fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '1rem', color: '#555' }}>
               Os dados e mensagens trocados através do contato por WhatsApp são tratados com estrito
-              sigilo profissional, em concordância com a Lei Geral de Proteção de Dados (LGPD) e o
-              código de ética biomédico vigente.
+              sigilo profissional em concordância com a Lei Geral de Proteção de Dados e o código de ética biomédico vigente
             </p>
             <button
               type="button"

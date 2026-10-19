@@ -45,22 +45,22 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
       style={{
         backgroundColor: '#FFFFFF',
         border: '1px solid rgba(112, 84, 73, 0.14)',
-        borderRadius: '2px',
+        borderRadius: '3px',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Header do Card */}
+      {/* Header do Card sem travessão */}
       <div
         style={{
-          padding: '1.25rem 1.5rem',
+          padding: '1rem 1.25rem',
           borderBottom: '1px solid rgba(112, 84, 73, 0.08)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'baseline',
           flexWrap: 'wrap',
-          gap: '0.5rem',
+          gap: '0.4rem',
         }}
       >
         <div>
@@ -73,13 +73,13 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
               textTransform: 'uppercase',
             }}
           >
-            Caso 0{item.id} • {item.area}
+            Caso 0{item.id} | {item.area}
           </span>
           <h3
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.25rem',
-              fontWeight: 500,
+              fontSize: '1.2rem',
+              fontWeight: 600,
               color: 'var(--color-primary)',
               marginTop: '0.2rem',
             }}
@@ -89,7 +89,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
         </div>
       </div>
 
-      {/* Área Visual: Slider Interativo ou Lado a Lado */}
+      {/* Área Visual: Slider Interativo ou Lado a Lado Compacta e Otimizada */}
       {viewMode === 'slider' ? (
         <div
           ref={containerRef}
@@ -110,7 +110,8 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '4/3',
+            aspectRatio: '16/10',
+            maxHeight: '300px',
             overflow: 'hidden',
             userSelect: 'none',
             cursor: 'ew-resize',
@@ -121,7 +122,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           {/* Imagem de DEPOIS (camada inferior completa) */}
           <img
             src={item.afterImage}
-            alt={`${item.title} - ${item.afterLabel}`}
+            alt={`${item.title} ${item.afterLabel}`}
             loading="lazy"
             decoding="async"
             style={{
@@ -146,7 +147,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           >
             <img
               src={item.beforeImage}
-              alt={`${item.title} - ${item.beforeLabel}`}
+              alt={`${item.title} ${item.beforeLabel}`}
               loading="lazy"
               decoding="async"
               style={{
@@ -162,7 +163,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             />
           </div>
 
-          {/* Linha Divisória Sólida (sem gradiente) */}
+          {/* Linha Divisória Sólida */}
           <div
             style={{
               position: 'absolute',
@@ -182,8 +183,8 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: '32px',
-                height: '32px',
+                width: '30px',
+                height: '30px',
                 borderRadius: '50%',
                 backgroundColor: 'var(--color-primary)',
                 border: '2px solid var(--color-gold)',
@@ -194,7 +195,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
                 boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
               }}
             >
-              <SlidersHorizontal size={14} />
+              <SlidersHorizontal size={13} />
             </div>
           </div>
 
@@ -202,16 +203,16 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           <div
             style={{
               position: 'absolute',
-              bottom: '0.875rem',
-              left: '0.875rem',
-              backgroundColor: 'rgba(73, 53, 45, 0.88)',
+              bottom: '0.625rem',
+              left: '0.625rem',
+              backgroundColor: 'rgba(73, 53, 45, 0.9)',
               color: '#FFFFFF',
               fontFamily: 'var(--font-sans)',
               fontSize: '0.6875rem',
               fontWeight: 600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              padding: '0.25rem 0.625rem',
+              padding: '0.2rem 0.5rem',
               borderRadius: '2px',
               pointerEvents: 'none',
               border: '1px solid rgba(184, 154, 101, 0.3)',
@@ -223,16 +224,16 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           <div
             style={{
               position: 'absolute',
-              bottom: '0.875rem',
-              right: '0.875rem',
-              backgroundColor: 'rgba(184, 154, 101, 0.92)',
+              bottom: '0.625rem',
+              right: '0.625rem',
+              backgroundColor: 'rgba(184, 154, 101, 0.95)',
               color: '#FFFFFF',
               fontFamily: 'var(--font-sans)',
               fontSize: '0.6875rem',
               fontWeight: 600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
-              padding: '0.25rem 0.625rem',
+              padding: '0.2rem 0.5rem',
               borderRadius: '2px',
               pointerEvents: 'none',
             }}
@@ -241,19 +242,20 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           </div>
         </div>
       ) : (
-        /* Modo Lado a Lado */
+        /* Modo Lado a Lado Compacto */
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: '2px',
             backgroundColor: 'rgba(112, 84, 73, 0.1)',
+            maxHeight: '300px',
           }}
         >
-          <div style={{ position: 'relative', aspectRatio: '4/3', backgroundColor: '#F8F5F1' }}>
+          <div style={{ position: 'relative', aspectRatio: '16/10', backgroundColor: '#F8F5F1' }}>
             <img
               src={item.beforeImage}
-              alt={`${item.title} - ${item.beforeLabel}`}
+              alt={`${item.title} ${item.beforeLabel}`}
               loading="lazy"
               decoding="async"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -263,7 +265,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
                 position: 'absolute',
                 bottom: '0.5rem',
                 left: '0.5rem',
-                backgroundColor: 'rgba(73, 53, 45, 0.88)',
+                backgroundColor: 'rgba(73, 53, 45, 0.9)',
                 color: '#FFFFFF',
                 fontSize: '0.625rem',
                 fontWeight: 600,
@@ -276,10 +278,10 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             </span>
           </div>
 
-          <div style={{ position: 'relative', aspectRatio: '4/3', backgroundColor: '#F8F5F1' }}>
+          <div style={{ position: 'relative', aspectRatio: '16/10', backgroundColor: '#F8F5F1' }}>
             <img
               src={item.afterImage}
-              alt={`${item.title} - ${item.afterLabel}`}
+              alt={`${item.title} ${item.afterLabel}`}
               loading="lazy"
               decoding="async"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -289,7 +291,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
                 position: 'absolute',
                 bottom: '0.5rem',
                 right: '0.5rem',
-                backgroundColor: 'rgba(184, 154, 101, 0.92)',
+                backgroundColor: 'rgba(184, 154, 101, 0.95)',
                 color: '#FFFFFF',
                 fontSize: '0.625rem',
                 fontWeight: 600,
@@ -304,10 +306,10 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
         </div>
       )}
 
-      {/* Descrição e Planejamento Individual */}
+      {/* Descrição sem ponto final */}
       <div
         style={{
-          padding: '1.25rem 1.5rem',
+          padding: '1rem 1.25rem',
           backgroundColor: '#FFFFFF',
           flexGrow: 1,
         }}
@@ -315,10 +317,10 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
         <p
           style={{
             fontFamily: 'var(--font-sans)',
-            fontSize: '0.875rem',
-            lineHeight: 1.6,
+            fontSize: '0.8125rem',
+            lineHeight: 1.55,
             color: 'var(--color-secondary)',
-            fontWeight: 300,
+            fontWeight: 400,
           }}
         >
           {item.description}
@@ -334,21 +336,20 @@ export const Results: React.FC = () => {
   return (
     <section
       id="resultados"
+      className="section-transition-top"
       style={{
         backgroundColor: '#FFFFFF',
         color: 'var(--color-dark)',
-        paddingTop: 'clamp(5rem, 8vw, 7.5rem)',
-        paddingBottom: 'clamp(5rem, 8vw, 7.5rem)',
-        borderTop: '1px solid rgba(112, 84, 73, 0.08)',
-        borderBottom: '1px solid rgba(112, 84, 73, 0.08)',
+        paddingTop: 'clamp(4rem, 6vw, 6rem)',
+        paddingBottom: 'clamp(4rem, 6vw, 6rem)',
       }}
     >
       <div className="container">
-        {/* Cabeçalho da Seção */}
+        {/* Cabeçalho da Seção sem ponto e sem travessão */}
         <div
           style={{
             maxWidth: '720px',
-            margin: '0 auto clamp(2.5rem, 4vw, 3.5rem) auto',
+            margin: '0 auto clamp(2rem, 3.5vw, 3rem) auto',
             textAlign: 'center',
           }}
         >
@@ -369,15 +370,15 @@ export const Results: React.FC = () => {
             />
             <span
               style={{
-                fontSize: '0.6875rem',
+                fontSize: '0.75rem',
                 fontFamily: 'var(--font-sans)',
                 fontWeight: 600,
-                letterSpacing: '0.2em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 color: 'var(--color-gold)',
               }}
             >
-              Casos Clínicos
+              Resultados Clínicos
             </span>
             <span
               style={{
@@ -392,10 +393,10 @@ export const Results: React.FC = () => {
             style={{
               fontFamily: 'var(--font-serif)',
               fontSize: 'clamp(2rem, 3.8vw, 3rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               lineHeight: 1.2,
               color: 'var(--color-primary)',
-              marginBottom: '1.25rem',
+              marginBottom: '1rem',
               letterSpacing: '-0.01em',
             }}
           >
@@ -406,14 +407,13 @@ export const Results: React.FC = () => {
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: 'clamp(0.9375rem, 1.2vw, 1.0625rem)',
-              lineHeight: 1.7,
+              lineHeight: 1.65,
               color: 'var(--color-secondary)',
-              fontWeight: 300,
-              marginBottom: '1.75rem',
+              fontWeight: 400,
+              marginBottom: '1.5rem',
             }}
           >
-            Cada pessoa tem características e objetivos únicos. O planejamento individual é parte
-            essencial de cada atendimento.
+            Cada pessoa tem características e objetivos únicos com planejamento individual em cada atendimento
           </p>
 
           {/* Controle de Modo de Visualização */}
@@ -423,7 +423,7 @@ export const Results: React.FC = () => {
               alignItems: 'center',
               gap: '0.5rem',
               backgroundColor: 'var(--color-offwhite)',
-              padding: '0.3rem',
+              padding: '0.25rem',
               borderRadius: '3px',
               border: '1px solid rgba(112, 84, 73, 0.12)',
             }}
@@ -436,16 +436,16 @@ export const Results: React.FC = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.4rem',
-                padding: '0.45rem 0.85rem',
+                padding: '0.4rem 0.8rem',
                 fontSize: '0.75rem',
-                fontWeight: 500,
-                letterSpacing: '0.06em',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
                 borderRadius: '2px',
                 backgroundColor: viewMode === 'slider' ? 'var(--color-primary)' : 'transparent',
                 color: viewMode === 'slider' ? '#FFFFFF' : 'var(--color-secondary)',
               }}
             >
-              <SlidersHorizontal size={14} />
+              <SlidersHorizontal size={13} />
               Deslizante
             </button>
 
@@ -457,61 +457,58 @@ export const Results: React.FC = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.4rem',
-                padding: '0.45rem 0.85rem',
+                padding: '0.4rem 0.8rem',
                 fontSize: '0.75rem',
-                fontWeight: 500,
-                letterSpacing: '0.06em',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
                 borderRadius: '2px',
                 backgroundColor: viewMode === 'split' ? 'var(--color-primary)' : 'transparent',
                 color: viewMode === 'split' ? '#FFFFFF' : 'var(--color-secondary)',
               }}
             >
-              <Columns size={14} />
+              <Columns size={13} />
               Lado a Lado
             </button>
           </div>
         </div>
 
-        {/* Grade com Quatro Resultados (Desktop: 2 colunas; Mobile: 1 coluna) */}
+        {/* Grade com Quatro Resultados Otimizada para Celular */}
         <div className="results-grid">
           {siteConfig.clinicalResults.map((item) => (
             <BeforeAfterCard key={item.id} item={item} viewMode={viewMode} />
           ))}
         </div>
 
-        {/* Observação Ética e Esclarecimento Profissional */}
+        {/* Observação Ética sem ponto final */}
         <div
           style={{
-            marginTop: '3.5rem',
-            padding: '1.25rem 1.75rem',
+            marginTop: '2.5rem',
+            padding: '1rem 1.5rem',
             backgroundColor: 'var(--color-offwhite)',
             borderLeft: '3px solid var(--color-gold)',
             borderRadius: '2px',
             display: 'flex',
             alignItems: 'flex-start',
-            gap: '1rem',
+            gap: '0.75rem',
             maxWidth: '840px',
             marginRight: 'auto',
             marginLeft: 'auto',
           }}
         >
           <ShieldCheck
-            size={20}
+            size={18}
             style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }}
           />
           <p
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: '0.8125rem',
-              lineHeight: 1.6,
+              lineHeight: 1.55,
               color: 'var(--color-secondary)',
               fontWeight: 400,
             }}
           >
-            <strong>Esclarecimento Profissional e Ético:</strong> As imagens apresentadas têm finalidade
-            informativa e ilustram respostas a planejamentos individualizados. Por determinação das normas
-            biomédicas e sanitárias, os resultados clínicos variam conforme a anatomia, o metabolismo e as
-            características biológicas de cada paciente.
+            <strong>Esclarecimento Profissional e Ético:</strong> As imagens apresentadas ilustram respostas a planejamentos individualizados e os resultados clínicos variam conforme a anatomia particular de cada paciente
           </p>
         </div>
       </div>
@@ -520,13 +517,13 @@ export const Results: React.FC = () => {
         .results-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 2.25rem;
+          gap: 1.5rem;
         }
 
         @media (min-width: 900px) {
           .results-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            gap: 2rem;
           }
         }
       `}</style>

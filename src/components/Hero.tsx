@@ -15,7 +15,7 @@ export const Hero: React.FC = () => {
         position: 'relative',
         overflow: 'hidden',
         paddingTop: 'calc(90px + env(safe-area-inset-top, 0px))',
-        paddingBottom: 'calc(3rem + env(safe-area-inset-bottom, 0px))',
+        paddingBottom: 'calc(2.5rem + env(safe-area-inset-bottom, 0px))',
       }}
     >
       {/* Detalhes sutis de linhas sólidas sem gradiente */}
@@ -31,24 +31,12 @@ export const Hero: React.FC = () => {
           pointerEvents: 'none',
         }}
       />
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: '35%',
-          right: 0,
-          width: 'clamp(4rem, 10vw, 8rem)',
-          height: '1px',
-          backgroundColor: 'rgba(184, 154, 101, 0.15)',
-          pointerEvents: 'none',
-        }}
-      />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-grid">
           {/* Coluna de Conteúdo Editorial */}
           <div className="hero-content animate-hero-text">
-            {/* Tag institucional */}
+            {/* Tag institucional sem ponto e sem travessão */}
             <div
               style={{
                 display: 'inline-flex',
@@ -67,15 +55,15 @@ export const Hero: React.FC = () => {
               />
               <span
                 style={{
-                  fontSize: '0.6875rem',
+                  fontSize: '0.75rem',
                   fontFamily: 'var(--font-sans)',
-                  fontWeight: 500,
-                  letterSpacing: '0.22em',
+                  fontWeight: 600,
+                  letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   color: 'var(--color-gold)',
                 }}
               >
-                Biomedicina Estética de Alta Precisão
+                Biomedicina Estética Avançada
               </span>
             </div>
 
@@ -83,18 +71,18 @@ export const Hero: React.FC = () => {
             <h1
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(2.4rem, 5vw, 4.25rem)',
-                fontWeight: 400,
-                lineHeight: 1.1,
+                fontSize: 'clamp(2.5rem, 5.2vw, 4.4rem)',
+                fontWeight: 600,
+                lineHeight: 1.12,
                 color: '#FFFFFF',
-                letterSpacing: '-0.02em',
+                letterSpacing: '-0.01em',
                 marginBottom: '1.5rem',
               }}
             >
               {siteConfig.doctor.name}
             </h1>
 
-            {/* Frase Institucional Obrigatória */}
+            {/* Frase Institucional sem ponto e sem travessão */}
             <p
               style={{
                 fontFamily: 'var(--font-serif)',
@@ -104,22 +92,21 @@ export const Hero: React.FC = () => {
                 color: 'var(--color-gold)',
                 marginBottom: '1.25rem',
                 fontWeight: 400,
-                letterSpacing: '0.01em',
               }}
             >
-              &ldquo;{siteConfig.doctor.institutionalPhrase}&rdquo;
+              {siteConfig.doctor.institutionalPhrase}
             </p>
 
-            {/* Texto de Apoio */}
+            {/* Texto de Apoio sem ponto final */}
             <p
               style={{
                 fontFamily: 'var(--font-sans)',
                 fontSize: 'clamp(0.9375rem, 1.3vw, 1.0625rem)',
                 lineHeight: 1.7,
-                color: 'rgba(255, 255, 255, 0.82)',
+                color: 'rgba(255, 255, 255, 0.88)',
                 maxWidth: '520px',
                 marginBottom: '2.5rem',
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
               {siteConfig.doctor.heroSupportText}
@@ -136,11 +123,9 @@ export const Hero: React.FC = () => {
               }}
             >
               <a
-                href={siteConfig.contact.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contato"
                 className="btn-gold"
-                aria-label="Agendar avaliação diretamente com a Dra. Leticia pelo WhatsApp"
+                aria-label="Agendar avaliação personalizada com a Dra Leticia"
               >
                 <MessageCircle size={16} strokeWidth={2} />
                 Agendar Avaliação
@@ -149,7 +134,7 @@ export const Hero: React.FC = () => {
               <a
                 href="#resultados"
                 className="btn-outline-gold"
-                aria-label="Ir para a seção de melhores resultados de antes e depois"
+                aria-label="Ir para a seção de resultados de antes e depois"
               >
                 Conhecer Resultados
                 <ArrowRight size={14} strokeWidth={2} />
@@ -157,25 +142,39 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Coluna da Fotografia Real da Dra. Leticia */}
+          {/* Coluna da Fotografia Real da Dra. Leticia Aumentada com Sombra no Final */}
           <div className="hero-image-wrapper animate-hero-photo">
             <div className="hero-image-container">
-              {/* Fotografia real com recorte transparente de verdade */}
+              {/* Fotografia real ampliada com recorte de alta qualidade */}
               <img
                 src={siteConfig.doctor.heroPhoto}
                 alt={siteConfig.doctor.heroPhotoAlt}
-                width={466}
-                height={618}
+                width={520}
+                height={690}
                 loading="eager"
                 fetchPriority="high"
                 onError={(e) => {
-                  // Fallback gracioso caso o cutout não carregue
                   const target = e.currentTarget;
                   if (target.src.indexOf('original') === -1) {
                     target.src = siteConfig.doctor.heroPhotoFallback;
                   }
                 }}
                 className="hero-doctor-img"
+              />
+
+              {/* Sombra difusa no final do hero para ocultar perfeitamente o fim da foto */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '140px',
+                  background: 'linear-gradient(to top, #49352D 25%, rgba(73, 53, 45, 0.85) 60%, transparent 100%)',
+                  pointerEvents: 'none',
+                  zIndex: 2,
+                }}
               />
             </div>
           </div>
@@ -187,7 +186,7 @@ export const Hero: React.FC = () => {
         .hero-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 2.5rem;
+          gap: 2rem;
           align-items: center;
           padding: 1rem 0;
         }
@@ -206,25 +205,27 @@ export const Hero: React.FC = () => {
         .hero-image-container {
           position: relative;
           display: inline-block;
-          max-width: 440px;
+          max-width: 520px;
           width: 100%;
+          overflow: hidden;
         }
 
         .hero-doctor-img {
           width: 100%;
           height: auto;
-          max-height: 72vh;
+          max-height: 85vh;
           object-fit: contain;
           object-position: bottom center;
-          /* Sombra suave e difusa atrás da silhueta */
-          filter: drop-shadow(0 22px 38px rgba(25, 23, 21, 0.55));
+          filter: drop-shadow(0 24px 42px rgba(25, 23, 21, 0.6));
+          transform: scale(1.05);
+          transform-origin: bottom center;
         }
 
         @media (min-width: 900px) {
           .hero-grid {
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 3.5rem;
-            min-height: calc(100vh - 120px);
+            min-height: calc(100vh - 100px);
           }
 
           .hero-image-wrapper {
@@ -232,19 +233,21 @@ export const Hero: React.FC = () => {
           }
 
           .hero-doctor-img {
-            max-height: 80vh;
+            max-height: 90vh;
+            transform: scale(1.08);
           }
         }
 
         @media (max-width: 899px) {
           .hero-grid {
             text-align: left;
-            padding-top: 1rem;
+            padding-top: 0.5rem;
           }
 
           .hero-doctor-img {
-            max-height: 48vh;
+            max-height: 56vh;
             margin-top: 1rem;
+            transform: scale(1.04);
           }
 
           .hero-actions {

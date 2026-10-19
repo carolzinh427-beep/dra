@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Procedures } from './components/Procedures';
+import { AestheticQuiz } from './components/AestheticQuiz';
 import { Results } from './components/Results';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -9,11 +10,11 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 export const App: React.FC = () => {
   useEffect(() => {
-    // Verificar se o usuário prefere movimento reduzido
+    // Respeito a prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
-    // IntersectionObserver para transições elegantes e sutis (400 a 700 ms)
+    // IntersectionObserver para transições elegantes entre seções (400 a 700 ms)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -51,12 +52,17 @@ export const App: React.FC = () => {
           <Procedures />
         </div>
 
-        {/* Seção 03: Resultados Antes e Depois em fundo branco */}
+        {/* Seção 03: Quiz Interativo Compacto para Diagnóstico da Dor Estética */}
+        <div className="fade-in-section">
+          <AestheticQuiz />
+        </div>
+
+        {/* Seção 04: Resultados Antes e Depois (4 Casos Clínicos) */}
         <div className="fade-in-section">
           <Results />
         </div>
 
-        {/* Seção 04: Agendamento Direto em marrom profundo */}
+        {/* Seção 05: Agendamento com Escolha de Dia e Horário */}
         <div className="fade-in-section">
           <Contact />
         </div>

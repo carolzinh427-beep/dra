@@ -9,7 +9,7 @@ export const FloatingWhatsApp: React.FC = () => {
         href={siteConfig.contact.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Falar agora com a Dra. Leticia Steegmuller no WhatsApp"
+        aria-label="Falar agora com a Dra Leticia Steegmuller no WhatsApp"
         style={{
           position: 'fixed',
           bottom: 'max(1.25rem, env(safe-area-inset-bottom, 1.25rem))',

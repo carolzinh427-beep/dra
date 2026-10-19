@@ -25,15 +25,30 @@
   --border-dark: rgba(184, 154, 101, 0.28);
   --border-gold: #B89A65;
 
-  /* Tipografia */
-  --font-serif: 'Bodoni Moda', 'Didot', 'Bodoni MT', 'Playfair Display', Georgia, serif;
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Tipografia Séria, Elegante e de Alta Legibilidade */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
   /* Espaçamentos e Estrutura */
   --container-max: 1240px;
   --transition-fast: 0.25s ease;
   --transition-smooth: 0.45s ease;
   --transition-hero: 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Transições elegantes entre seções */
+.section-transition-top {
+  position: relative;
+}
+
+.section-transition-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(184, 154, 101, 0.2);
 }
 
 /* Reset Global & Acessibilidade */

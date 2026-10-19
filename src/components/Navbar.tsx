@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
           {/* Logo Tipográfico */}
           <a
             href="#inicio"
-            aria-label="Dra. Leticia Steegmuller - Página Inicial"
+            aria-label="Dra Leticia Steegmuller Página Inicial"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -84,7 +84,7 @@ export const Navbar: React.FC = () => {
               style={{
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(1.15rem, 2.2vw, 1.4rem)',
-                fontWeight: 500,
+                fontWeight: 600,
                 color: '#FFFFFF',
                 letterSpacing: '0.04em',
               }}
@@ -98,7 +98,7 @@ export const Navbar: React.FC = () => {
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
                 color: 'var(--color-gold)',
-                fontWeight: 500,
+                fontWeight: 600,
                 marginTop: '3px',
               }}
             >
@@ -121,15 +121,15 @@ export const Navbar: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 style={{
-                  color: 'rgba(255, 255, 255, 0.85)',
+                  color: 'rgba(255, 255, 255, 0.88)',
                   fontSize: '0.875rem',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   letterSpacing: '0.05em',
                   transition: 'color 0.2s ease',
                   position: 'relative',
                 }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-gold)')}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255, 255, 255, 0.85)')}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255, 255, 255, 0.88)')}
               >
                 {link.label}
               </a>
@@ -145,10 +145,8 @@ export const Navbar: React.FC = () => {
             }}
           >
             <a
-              href={siteConfig.contact.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Agendar avaliação pelo WhatsApp da Dra. Leticia"
+              href="#contato"
+              aria-label="Agendar avaliação com a Dra Leticia"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
