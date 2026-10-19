@@ -1,0 +1,21 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#F8F5F1"/>
+  <rect x="24" y="24" width="752" height="552" rx="4" stroke="#49352D" stroke-opacity="0.12" stroke-width="1"/>
+  <rect x="36" y="36" width="728" height="528" rx="2" stroke="#705449" stroke-opacity="0.25" stroke-dasharray="4 4" stroke-width="1"/>
+  
+  <!-- Icon container -->
+  <circle cx="400" cy="240" r="44" fill="#49352D" fill-opacity="0.04"/>
+  <circle cx="400" cy="240" r="43" stroke="#B89A65" stroke-opacity="0.4"/>
+  <path d="M386 230C386 226.686 388.686 224 392 224H408C411.314 224 414 226.686 414 230V250C414 253.314 411.314 256 408 256H392C388.686 256 386 253.314 386 250V230Z" stroke="#49352D" stroke-width="1.75"/>
+  <circle cx="400" cy="240" r="7" stroke="#B89A65" stroke-width="1.75"/>
+  <circle cx="407" cy="231" r="1.5" fill="#B89A65"/>
+  
+  <!-- Badge -->
+  <rect x="340" y="310" width="120" height="30" rx="15" fill="#705449"/>
+  <text x="400" y="330" font-family="'DM Sans', sans-serif" font-size="13" font-weight="600" letter-spacing="2" fill="#FFFFFF" text-anchor="middle">ANTES</text>
+  
+  <!-- Title & Instructions -->
+  <text x="400" y="375" font-family="'Bodoni Moda', serif" font-size="22" font-weight="500" fill="#49352D" text-anchor="middle">Caso 01 — Harmonização e Contorno Facial</text>
+  <text x="400" y="410" font-family="'DM Sans', sans-serif" font-size="14" fill="#705449" text-anchor="middle">Espaço reservado para documentação fotográfica real</text>
+  <text x="400" y="435" font-family="'DM Sans', sans-serif" font-size="12" fill="#191715" fill-opacity="0.45" text-anchor="middle">Substituição simples em /public/images/results/case1-before.jpg</text>
+</svg>
