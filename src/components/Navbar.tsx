@@ -54,11 +54,11 @@ export const Navbar: React.FC = () => {
           right: 0,
           zIndex: 1000,
           paddingTop: 'env(safe-area-inset-top, 0px)',
-          backgroundColor: isScrolled ? '#49352D' : 'transparent',
-          borderBottom: isScrolled
-            ? '1px solid rgba(184, 154, 101, 0.2)'
-            : '1px solid rgba(255, 255, 255, 0.08)',
-          transition: 'background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
+          backgroundColor: isScrolled ? 'rgba(73, 53, 45, 0.72)' : 'rgba(73, 53, 45, 0.3)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: '1px solid rgba(184, 154, 101, 0.2)',
+          transition: 'background-color 0.3s ease, border-color 0.3s ease',
         }}
       >
         <div
@@ -277,16 +277,6 @@ export const Navbar: React.FC = () => {
             >
               Agendar Avaliação pelo WhatsApp
             </a>
-            <p
-              style={{
-                fontSize: '0.75rem',
-                color: 'rgba(255, 255, 255, 0.55)',
-                textAlign: 'center',
-                letterSpacing: '0.04em',
-              }}
-            >
-              Atendimento exclusivo com hora marcada
-            </p>
           </div>
         </div>
       )}

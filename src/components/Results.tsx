@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { SlidersHorizontal, Columns, ShieldCheck } from 'lucide-react';
+import { SlidersHorizontal, Columns, MessageCircle, Calendar } from 'lucide-react';
 import { siteConfig, type ClinicalResultItem } from '../config/siteConfig';
 
 interface BeforeAfterSliderProps {
@@ -54,7 +54,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
       {/* Header do Card sem travessão */}
       <div
         style={{
-          padding: '1rem 1.25rem',
+          padding: '0.875rem 1.125rem',
           borderBottom: '1px solid rgba(112, 84, 73, 0.08)',
           display: 'flex',
           justifyContent: 'space-between',
@@ -78,10 +78,10 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
           <h3
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.2rem',
+              fontSize: '1.15rem',
               fontWeight: 600,
               color: 'var(--color-primary)',
-              marginTop: '0.2rem',
+              marginTop: '0.15rem',
             }}
           >
             {item.title}
@@ -89,8 +89,77 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
         </div>
       </div>
 
-      {/* Área Visual: Slider Interativo ou Lado a Lado Compacta e Otimizada */}
-      {viewMode === 'slider' ? (
+      {/* Área Visual: Duas Imagens ao Lado uma da Outra (Padrão) ou Deslizante */}
+      {viewMode === 'split' ? (
+        /* Duas imagens ao lado uma da outra */
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '2px',
+            backgroundColor: 'rgba(112, 84, 73, 0.1)',
+            width: '100%',
+          }}
+        >
+          {/* Antes */}
+          <div style={{ position: 'relative', aspectRatio: '4/3', backgroundColor: '#F8F5F1', overflow: 'hidden' }}>
+            <img
+              src={item.beforeImage}
+              alt={`${item.title} ${item.beforeLabel}`}
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <span
+              style={{
+                position: 'absolute',
+                bottom: '0.4rem',
+                left: '0.4rem',
+                backgroundColor: 'rgba(73, 53, 45, 0.92)',
+                color: '#FFFFFF',
+                fontSize: '0.625rem',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                padding: '0.2rem 0.5rem',
+                borderRadius: '2px',
+                border: '1px solid rgba(184, 154, 101, 0.3)',
+              }}
+            >
+              {item.beforeLabel}
+            </span>
+          </div>
+
+          {/* Depois */}
+          <div style={{ position: 'relative', aspectRatio: '4/3', backgroundColor: '#F8F5F1', overflow: 'hidden' }}>
+            <img
+              src={item.afterImage}
+              alt={`${item.title} ${item.afterLabel}`}
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <span
+              style={{
+                position: 'absolute',
+                bottom: '0.4rem',
+                right: '0.4rem',
+                backgroundColor: 'rgba(184, 154, 101, 0.95)',
+                color: '#FFFFFF',
+                fontSize: '0.625rem',
+                fontWeight: 600,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                padding: '0.2rem 0.5rem',
+                borderRadius: '2px',
+              }}
+            >
+              {item.afterLabel}
+            </span>
+          </div>
+        </div>
+      ) : (
+        /* Modo Deslizante Interativo */
         <div
           ref={containerRef}
           role="slider"
@@ -119,7 +188,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             containerType: 'inline-size',
           }}
         >
-          {/* Imagem de DEPOIS (camada inferior completa) */}
+          {/* Imagem de DEPOIS */}
           <img
             src={item.afterImage}
             alt={`${item.title} ${item.afterLabel}`}
@@ -135,7 +204,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             }}
           />
 
-          {/* Imagem de ANTES (camada superior recortada pelo slider) */}
+          {/* Imagem de ANTES */}
           <div
             style={{
               position: 'absolute',
@@ -163,7 +232,7 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             />
           </div>
 
-          {/* Linha Divisória Sólida */}
+          {/* Linha Divisória */}
           <div
             style={{
               position: 'absolute',
@@ -176,15 +245,14 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
               pointerEvents: 'none',
             }}
           >
-            {/* Handle do Slider */}
             <div
               style={{
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: '30px',
-                height: '30px',
+                width: '28px',
+                height: '28px',
                 borderRadius: '50%',
                 backgroundColor: 'var(--color-primary)',
                 border: '2px solid var(--color-gold)',
@@ -195,11 +263,10 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
                 boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
               }}
             >
-              <SlidersHorizontal size={13} />
+              <SlidersHorizontal size={12} />
             </div>
           </div>
 
-          {/* Etiquetas Discretas de Antes e Depois */}
           <div
             style={{
               position: 'absolute',
@@ -241,75 +308,12 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
             {item.afterLabel}
           </div>
         </div>
-      ) : (
-        /* Modo Lado a Lado Compacto */
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '2px',
-            backgroundColor: 'rgba(112, 84, 73, 0.1)',
-            maxHeight: '300px',
-          }}
-        >
-          <div style={{ position: 'relative', aspectRatio: '16/10', backgroundColor: '#F8F5F1' }}>
-            <img
-              src={item.beforeImage}
-              alt={`${item.title} ${item.beforeLabel}`}
-              loading="lazy"
-              decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                bottom: '0.5rem',
-                left: '0.5rem',
-                backgroundColor: 'rgba(73, 53, 45, 0.9)',
-                color: '#FFFFFF',
-                fontSize: '0.625rem',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                padding: '0.2rem 0.5rem',
-                borderRadius: '2px',
-              }}
-            >
-              {item.beforeLabel}
-            </span>
-          </div>
-
-          <div style={{ position: 'relative', aspectRatio: '16/10', backgroundColor: '#F8F5F1' }}>
-            <img
-              src={item.afterImage}
-              alt={`${item.title} ${item.afterLabel}`}
-              loading="lazy"
-              decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                bottom: '0.5rem',
-                right: '0.5rem',
-                backgroundColor: 'rgba(184, 154, 101, 0.95)',
-                color: '#FFFFFF',
-                fontSize: '0.625rem',
-                fontWeight: 600,
-                letterSpacing: '0.1em',
-                padding: '0.2rem 0.5rem',
-                borderRadius: '2px',
-              }}
-            >
-              {item.afterLabel}
-            </span>
-          </div>
-        </div>
       )}
 
       {/* Descrição sem ponto final */}
       <div
         style={{
-          padding: '1rem 1.25rem',
+          padding: '0.875rem 1.125rem',
           backgroundColor: '#FFFFFF',
           flexGrow: 1,
         }}
@@ -331,7 +335,8 @@ const BeforeAfterCard: React.FC<BeforeAfterSliderProps> = ({ item, viewMode }) =
 };
 
 export const Results: React.FC = () => {
-  const [viewMode, setViewMode] = useState<'slider' | 'split'>('slider');
+  // Padrão: split (duas imagens ao lado uma da outra)
+  const [viewMode, setViewMode] = useState<'slider' | 'split'>('split');
 
   return (
     <section
@@ -340,7 +345,7 @@ export const Results: React.FC = () => {
       style={{
         backgroundColor: '#FFFFFF',
         color: 'var(--color-dark)',
-        paddingTop: 'clamp(4rem, 6vw, 6rem)',
+        paddingTop: 'clamp(3.5rem, 5.5vw, 5.5rem)',
         paddingBottom: 'clamp(4rem, 6vw, 6rem)',
       }}
     >
@@ -349,7 +354,7 @@ export const Results: React.FC = () => {
         <div
           style={{
             maxWidth: '720px',
-            margin: '0 auto clamp(2rem, 3.5vw, 3rem) auto',
+            margin: '0 auto clamp(1.75rem, 3vw, 2.5rem) auto',
             textAlign: 'center',
           }}
         >
@@ -358,7 +363,7 @@ export const Results: React.FC = () => {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.75rem',
-              marginBottom: '1rem',
+              marginBottom: '0.75rem',
             }}
           >
             <span
@@ -392,11 +397,11 @@ export const Results: React.FC = () => {
           <h2
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(2rem, 3.8vw, 3rem)',
+              fontSize: 'clamp(1.9rem, 3.6vw, 2.85rem)',
               fontWeight: 600,
               lineHeight: 1.2,
               color: 'var(--color-primary)',
-              marginBottom: '1rem',
+              marginBottom: '0.75rem',
               letterSpacing: '-0.01em',
             }}
           >
@@ -407,16 +412,16 @@ export const Results: React.FC = () => {
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: 'clamp(0.9375rem, 1.2vw, 1.0625rem)',
-              lineHeight: 1.65,
+              lineHeight: 1.6,
               color: 'var(--color-secondary)',
               fontWeight: 400,
-              marginBottom: '1.5rem',
+              marginBottom: '1.25rem',
             }}
           >
-            Cada pessoa tem características e objetivos únicos com planejamento individual em cada atendimento
+            Duas imagens ao lado para comparação imediata de naturalidade e técnica
           </p>
 
-          {/* Controle de Modo de Visualização */}
+          {/* Alternador de Modo de Exibição */}
           <div
             style={{
               display: 'inline-flex',
@@ -428,6 +433,27 @@ export const Results: React.FC = () => {
               border: '1px solid rgba(112, 84, 73, 0.12)',
             }}
           >
+            <button
+              type="button"
+              onClick={() => setViewMode('split')}
+              aria-label="Visualização lado a lado"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.4rem 0.8rem',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                borderRadius: '2px',
+                backgroundColor: viewMode === 'split' ? 'var(--color-primary)' : 'transparent',
+                color: viewMode === 'split' ? '#FFFFFF' : 'var(--color-secondary)',
+              }}
+            >
+              <Columns size={13} />
+              Lado a Lado
+            </button>
+
             <button
               type="button"
               onClick={() => setViewMode('slider')}
@@ -448,68 +474,54 @@ export const Results: React.FC = () => {
               <SlidersHorizontal size={13} />
               Deslizante
             </button>
-
-            <button
-              type="button"
-              onClick={() => setViewMode('split')}
-              aria-label="Visualização em modo lado a lado"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.4rem 0.8rem',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                letterSpacing: '0.04em',
-                borderRadius: '2px',
-                backgroundColor: viewMode === 'split' ? 'var(--color-primary)' : 'transparent',
-                color: viewMode === 'split' ? '#FFFFFF' : 'var(--color-secondary)',
-              }}
-            >
-              <Columns size={13} />
-              Lado a Lado
-            </button>
           </div>
         </div>
 
-        {/* Grade com Quatro Resultados Otimizada para Celular */}
+        {/* Grade com Quatro Resultados: duas imagens ao lado uma da outra */}
         <div className="results-grid">
           {siteConfig.clinicalResults.map((item) => (
             <BeforeAfterCard key={item.id} item={item} viewMode={viewMode} />
           ))}
         </div>
 
-        {/* Observação Ética sem ponto final */}
+        {/* Botões de Agendar e Conhecer WhatsApp Abaixo dos Resultados */}
         <div
           style={{
             marginTop: '2.5rem',
-            padding: '1rem 1.5rem',
-            backgroundColor: 'var(--color-offwhite)',
-            borderLeft: '3px solid var(--color-gold)',
-            borderRadius: '2px',
             display: 'flex',
-            alignItems: 'flex-start',
-            gap: '0.75rem',
-            maxWidth: '840px',
-            marginRight: 'auto',
-            marginLeft: 'auto',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '1rem',
+            flexWrap: 'wrap',
           }}
         >
-          <ShieldCheck
-            size={18}
-            style={{ color: 'var(--color-gold)', flexShrink: 0, marginTop: '2px' }}
-          />
-          <p
+          <a
+            href={siteConfig.contact.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold"
             style={{
-              fontFamily: 'var(--font-sans)',
+              padding: '0.95rem 1.85rem',
               fontSize: '0.8125rem',
-              lineHeight: 1.55,
-              color: 'var(--color-secondary)',
-              fontWeight: 400,
             }}
+            aria-label="Agendar avaliação pelo WhatsApp"
           >
-            <strong>Esclarecimento Profissional e Ético:</strong> As imagens apresentadas ilustram respostas a planejamentos individualizados e os resultados clínicos variam conforme a anatomia particular de cada paciente
-          </p>
+            <MessageCircle size={16} strokeWidth={2} />
+            Agendar no WhatsApp
+          </a>
+
+          <a
+            href="#contato"
+            className="btn-outline-dark"
+            style={{
+              padding: '0.95rem 1.85rem',
+              fontSize: '0.8125rem',
+            }}
+            aria-label="Escolher dia e horário para agendamento"
+          >
+            <Calendar size={16} strokeWidth={2} />
+            Escolher Dia e Horário
+          </a>
         </div>
       </div>
 

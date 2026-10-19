@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Results } from './components/Results';
 import { Procedures } from './components/Procedures';
 import { AestheticQuiz } from './components/AestheticQuiz';
-import { Results } from './components/Results';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -39,27 +39,27 @@ export const App: React.FC = () => {
 
   return (
     <div className="site-wrapper" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Barra de Navegação */}
+      {/* Barra de Navegação Transparente e Vitralítica */}
       <Navbar />
 
       {/* Conteúdo Principal */}
       <main id="main-content" role="main" style={{ flexGrow: 1 }}>
-        {/* Seção 01: Hero com fotografia protagonista e marrom profundo */}
+        {/* Seção 01: Hero (No mobile: apenas foto e nome sobrepondo embaixo) */}
         <Hero />
 
-        {/* Seção 02: Procedimentos em fundo off-white */}
+        {/* Seção 02: Resultados Antes e Depois imediatamente abaixo do Hero (com botões de agendar e whatsapp abaixo) */}
+        <div className="fade-in-section">
+          <Results />
+        </div>
+
+        {/* Seção 03: Procedimentos sem imagem posicionada após Resultados */}
         <div className="fade-in-section">
           <Procedures />
         </div>
 
-        {/* Seção 03: Quiz Interativo Compacto para Diagnóstico da Dor Estética */}
+        {/* Seção 04: Quiz Interativo Compacto no Mobile */}
         <div className="fade-in-section">
           <AestheticQuiz />
-        </div>
-
-        {/* Seção 04: Resultados Antes e Depois (4 Casos Clínicos) */}
-        <div className="fade-in-section">
-          <Results />
         </div>
 
         {/* Seção 05: Agendamento com Escolha de Dia e Horário */}
