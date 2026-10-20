@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MessageCircle, ArrowUp } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
 import { siteConfig } from '../config/siteConfig';
+import { AnimatedContent } from './AnimatedContent';
 
 export const Footer: React.FC = () => {
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
@@ -24,17 +25,23 @@ export const Footer: React.FC = () => {
         }}
       >
         <div className="container">
-          <div
-            style={{
-              maxWidth: '820px',
-              margin: '0 auto',
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '1.75rem',
-            }}
+          <AnimatedContent
+            distance={40}
+            direction="vertical"
+            duration={0.8}
+            threshold={0.1}
           >
+            <div
+              style={{
+                maxWidth: '820px',
+                margin: '0 auto',
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '1.75rem',
+              }}
+            >
             {/* Nome da Profissional */}
             <div>
               <a
@@ -252,8 +259,9 @@ export const Footer: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </AnimatedContent>
+      </div>
+    </footer>
 
       {/* Modal de Política de Privacidade */}
       {showPrivacyModal && (

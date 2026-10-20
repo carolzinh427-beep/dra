@@ -1,6 +1,8 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, ArrowRight, MessageCircle } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
+import { ScrollStack, ScrollStackItem } from './ScrollStack';
+import { AnimatedContent } from './AnimatedContent';
 
 export const Procedures: React.FC = () => {
   return (
@@ -15,188 +17,245 @@ export const Procedures: React.FC = () => {
       }}
     >
       <div className="container">
-        {/* Cabeçalho da Seção sem ponto e sem travessão */}
-        <div
-          style={{
-            maxWidth: '680px',
-            margin: '0 auto clamp(2rem, 3.5vw, 3rem) auto',
-            textAlign: 'center',
-          }}
+        {/* Cabeçalho da Seção com AnimatedContent sem ponto e sem travessão */}
+        <AnimatedContent
+          distance={50}
+          direction="vertical"
+          duration={0.8}
+          ease="power3.out"
         >
           <div
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              marginBottom: '0.75rem',
+              maxWidth: '680px',
+              margin: '0 auto clamp(1.75rem, 3vw, 2.5rem) auto',
+              textAlign: 'center',
             }}
           >
-            <span
+            <div
               style={{
-                width: '28px',
-                height: '1px',
-                backgroundColor: 'var(--color-gold)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                marginBottom: '0.75rem',
               }}
-            />
-            <span
+            >
+              <span
+                style={{
+                  width: '28px',
+                  height: '1px',
+                  backgroundColor: 'var(--color-gold)',
+                }}
+              />
+              <span
+                style={{
+                  fontSize: '0.75rem',
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 600,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-gold)',
+                }}
+              >
+                Procedimentos
+              </span>
+              <span
+                style={{
+                  width: '28px',
+                  height: '1px',
+                  backgroundColor: 'var(--color-gold)',
+                }}
+              />
+            </div>
+
+            <h2
               style={{
-                fontSize: '0.75rem',
-                fontFamily: 'var(--font-sans)',
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(1.9rem, 3.6vw, 2.85rem)',
                 fontWeight: 600,
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: 'var(--color-gold)',
+                lineHeight: 1.2,
+                color: 'var(--color-primary)',
+                marginBottom: '0.75rem',
+                letterSpacing: '-0.01em',
               }}
             >
-              Procedimentos
-            </span>
-            <span
+              Cuidado que respeita sua individualidade
+            </h2>
+
+            <p
               style={{
-                width: '28px',
-                height: '1px',
-                backgroundColor: 'var(--color-gold)',
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'clamp(0.9375rem, 1.2vw, 1.0625rem)',
+                lineHeight: 1.65,
+                color: 'var(--color-secondary)',
+                fontWeight: 400,
               }}
-            />
+            >
+              Role para explorar os tratamentos com foco em naturalidade e precisão
+            </p>
           </div>
+        </AnimatedContent>
 
-          <h2
+        {/* ScrollStack de Procedimentos Sem Descrição */}
+        <AnimatedContent
+          distance={60}
+          direction="vertical"
+          duration={0.8}
+          threshold={0.1}
+        >
+          <div
+            className="procedures-stack-container"
             style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.9rem, 3.6vw, 2.85rem)',
-              fontWeight: 600,
-              lineHeight: 1.2,
-              color: 'var(--color-primary)',
-              marginBottom: '0.75rem',
-              letterSpacing: '-0.01em',
+              height: 'clamp(460px, 58vh, 540px)',
+              maxWidth: '820px',
+              margin: '0 auto',
+              position: 'relative',
+              borderRadius: '20px',
             }}
           >
-            Cuidado que respeita sua individualidade
-          </h2>
-
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'clamp(0.9375rem, 1.2vw, 1.0625rem)',
-              lineHeight: 1.65,
-              color: 'var(--color-secondary)',
-              fontWeight: 400,
-            }}
-          >
-            Cada plano estético considera as características e objetivos únicos de cada pessoa
-          </p>
-        </div>
-
-        {/* Grade de Procedimentos sem Imagem, apenas Tipografia e Acabamento Nobre */}
-        <div className="procedures-grid">
-          {siteConfig.procedures.map((proc, index) => (
-            <article
-              key={proc.id}
-              className="procedure-card"
-              style={{
-                backgroundColor: '#FFFFFF',
-                borderRadius: '3px',
-                border: '1px solid rgba(112, 84, 73, 0.12)',
-                padding: 'clamp(1.5rem, 3vw, 2.25rem)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                transition: 'border-color 0.25s ease, transform 0.25s ease',
-                position: 'relative',
-              }}
+            <ScrollStack
+              itemDistance={85}
+              itemStackDistance={20}
+              stackPosition="12%"
+              smoothScroll={true}
+              holdDistance={180}
             >
-              {/* Topo do Card com Número e Ícone */}
-              <div>
-                <div
+              {siteConfig.procedures.map((proc, index) => (
+                <ScrollStackItem
+                  key={proc.id}
                   style={{
+                    backgroundColor: '#FFFFFF',
+                    border: '1px solid rgba(112, 84, 73, 0.16)',
+                    borderRadius: '20px',
+                    padding: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+                    minHeight: '14rem',
+                    boxShadow: '0 12px 36px -12px rgba(73, 53, 45, 0.15)',
                     display: 'flex',
-                    alignItems: 'center',
+                    flexDirection: 'column',
                     justifyContent: 'space-between',
-                    marginBottom: '1rem',
                   }}
                 >
-                  <span
+                  <div>
+                    {/* Topo do Card com Número e Ícone */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        marginBottom: '1rem',
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-serif)',
+                            fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
+                            fontWeight: 600,
+                            color: 'var(--color-gold)',
+                            lineHeight: 1,
+                          }}
+                        >
+                          0{index + 1}
+                        </span>
+                        <span
+                          style={{
+                            display: 'inline-block',
+                            width: '24px',
+                            height: '1px',
+                            backgroundColor: 'rgba(184, 154, 101, 0.4)',
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-sans)',
+                            fontSize: '0.6875rem',
+                            fontWeight: 600,
+                            letterSpacing: '0.14em',
+                            textTransform: 'uppercase',
+                            color: 'var(--color-gold)',
+                          }}
+                        >
+                          {proc.subtitle}
+                        </span>
+                      </div>
+
+                      <Sparkles size={18} style={{ color: 'var(--color-gold)', opacity: 0.8 }} />
+                    </div>
+
+                    {/* Título do Procedimento Sem Descrição */}
+                    <h3
+                      style={{
+                        fontFamily: 'var(--font-serif)',
+                        fontSize: 'clamp(1.4rem, 2.6vw, 1.95rem)',
+                        fontWeight: 600,
+                        color: 'var(--color-primary)',
+                        marginBottom: '1rem',
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {proc.title}
+                    </h3>
+                  </div>
+
+                  {/* Ação Elegante do Card */}
+                  <div
                     style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: '1.5rem',
-                      fontWeight: 600,
-                      color: 'var(--color-gold)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingTop: '1rem',
+                      borderTop: '1px solid rgba(112, 84, 73, 0.08)',
+                      flexWrap: 'wrap',
+                      gap: '0.75rem',
                     }}
                   >
-                    0{index + 1}
-                  </span>
+                    <span
+                      style={{
+                        fontSize: '0.75rem',
+                        fontWeight: 500,
+                        color: 'var(--color-secondary)',
+                        letterSpacing: '0.04em',
+                      }}
+                    >
+                      Protocolo exclusivo e personalizado
+                    </span>
 
-                  <Sparkles size={16} style={{ color: 'var(--color-gold)', opacity: 0.7 }} />
-                </div>
-
-                <span
-                  style={{
-                    display: 'block',
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '0.6875rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.14em',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-gold)',
-                    marginBottom: '0.4rem',
-                  }}
-                >
-                  {proc.subtitle}
-                </span>
-
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: 'clamp(1.3rem, 1.9vw, 1.55rem)',
-                    fontWeight: 600,
-                    color: 'var(--color-primary)',
-                    marginBottom: '0.75rem',
-                    lineHeight: 1.25,
-                  }}
-                >
-                  {proc.title}
-                </h3>
-
-                <p
-                  style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '0.875rem',
-                    lineHeight: 1.65,
-                    color: 'var(--color-secondary)',
-                    fontWeight: 400,
-                  }}
-                >
-                  {proc.description}
-                </p>
-              </div>
-            </article>
-          ))}
-        </div>
+                    <a
+                      href={siteConfig.contact.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="procedure-cta-btn"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.55rem 1.15rem',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.06em',
+                        borderRadius: '3px',
+                        backgroundColor: 'var(--color-primary)',
+                        color: '#FFFFFF',
+                        transition: 'background-color 0.2s ease, transform 0.2s ease',
+                      }}
+                      aria-label={`Agendar ${proc.title} pelo WhatsApp`}
+                    >
+                      <MessageCircle size={14} />
+                      Agendar no WhatsApp
+                      <ArrowRight size={13} />
+                    </a>
+                  </div>
+                </ScrollStackItem>
+              ))}
+            </ScrollStack>
+          </div>
+        </AnimatedContent>
       </div>
 
       <style>{`
-        .procedures-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.25rem;
-        }
-
-        @media (min-width: 640px) {
-          .procedures-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .procedures-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.75rem;
-          }
-        }
-
-        .procedure-card:hover {
-          border-color: var(--color-gold) !important;
-          transform: translateY(-2px);
+        .procedure-cta-btn:hover {
+          background-color: var(--color-gold) !important;
+          color: #FFFFFF !important;
+          transform: translateY(-1px);
         }
       `}</style>
     </section>

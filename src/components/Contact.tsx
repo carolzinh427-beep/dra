@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MessageCircle, Clock, Phone, Sparkles, Calendar, User } from 'lucide-react';
 import { InstagramIcon } from './InstagramIcon';
 import { siteConfig } from '../config/siteConfig';
+import { AnimatedContent } from './AnimatedContent';
 
 export const Contact: React.FC = () => {
   const [selectedProcedure, setSelectedProcedure] = useState('Harmonização Facial');
@@ -55,13 +56,19 @@ export const Contact: React.FC = () => {
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        <div
-          style={{
-            maxWidth: '740px',
-            margin: '0 auto',
-            textAlign: 'center',
-          }}
+        <AnimatedContent
+          distance={50}
+          direction="vertical"
+          duration={0.8}
+          threshold={0.1}
         >
+          <div
+            style={{
+              maxWidth: '740px',
+              margin: '0 auto',
+              textAlign: 'center',
+            }}
+          >
           {/* Tag de Contato sem ponto e sem travessão */}
           <div
             style={{
@@ -375,7 +382,8 @@ export const Contact: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </AnimatedContent>
+    </div>
+  </section>
   );
 };

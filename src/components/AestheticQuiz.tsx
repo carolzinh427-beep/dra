@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Check, ArrowRight, RotateCcw, MessageCircle } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
+import { AnimatedContent } from './AnimatedContent';
 
 interface QuestionOption {
   label: string;
@@ -72,18 +73,24 @@ export const AestheticQuiz: React.FC = () => {
       }}
     >
       <div className="container">
-        {/* Card do Quiz com tamanho compacto para celular */}
-        <div
-          style={{
-            maxWidth: '560px',
-            margin: '0 auto',
-            backgroundColor: 'var(--color-offwhite)',
-            border: '1px solid rgba(184, 154, 101, 0.35)',
-            borderRadius: '4px',
-            padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
-            boxShadow: '0 4px 20px rgba(73, 53, 45, 0.04)',
-          }}
+        {/* Card do Quiz com tamanho compacto para celular e AnimatedContent */}
+        <AnimatedContent
+          distance={50}
+          direction="vertical"
+          duration={0.8}
+          threshold={0.15}
         >
+          <div
+            style={{
+              maxWidth: '560px',
+              margin: '0 auto',
+              backgroundColor: 'var(--color-offwhite)',
+              border: '1px solid rgba(184, 154, 101, 0.35)',
+              borderRadius: '4px',
+              padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
+              boxShadow: '0 4px 20px rgba(73, 53, 45, 0.04)',
+            }}
+          >
           {/* Topo do Quiz com indicador de passos compacto */}
           <div
             style={{
@@ -336,6 +343,7 @@ export const AestheticQuiz: React.FC = () => {
             </div>
           )}
         </div>
+        </AnimatedContent>
       </div>
     </section>
   );

@@ -94,6 +94,24 @@ export const siteConfig = {
       image: '/images/procedures/preenchimento.jpg',
       alt: 'Preenchimento labial refinado com foco em naturalidade',
     },
+    {
+      id: 'fios-sustentacao',
+      title: 'Fios de Sustentação e PDO',
+      subtitle: 'Tração e Estímulo Dérmico',
+      description:
+        'Efeito lifting suave e regeneração tecidual progressiva com reposicionamento sutil de tecidos',
+      image: '/images/procedures/fios.jpg',
+      alt: 'Fios de sustentação e estimulo dermico',
+    },
+    {
+      id: 'rinomodelacao',
+      title: 'Rinomodelação com Ácido Hialurônico',
+      subtitle: 'Harmonia e Proporção Nasal',
+      description:
+        'Ajuste refinado do dorso e ponta nasal sem cirurgia valorizando o perfil facial com naturalidade',
+      image: '/images/procedures/rinomodelacao.jpg',
+      alt: 'Rinomodelação facial com ácido hialurônico',
+    },
   ] as ProcedureItem[],
 
   // Quatro espaços de Antes e Depois (Reais e IA)

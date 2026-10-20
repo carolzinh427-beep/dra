@@ -1,0 +1,66 @@
+.scroll-stack {
+  position: relative;
+  width: 100%;
+}
+
+.scroll-stack--contained {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) rgba(112, 84, 73, 0.08);
+}
+
+.scroll-stack--contained::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-stack--contained::-webkit-scrollbar-track {
+  background: rgba(112, 84, 73, 0.05);
+  border-radius: 3px;
+}
+
+.scroll-stack--contained::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 3px;
+}
+
+.scroll-stack__inner {
+  position: relative;
+  padding-inline: clamp(0.75rem, 4%, 3rem);
+}
+
+.scroll-stack__slot {
+  position: sticky;
+}
+
+.scroll-stack-card {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 14rem;
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+  border-radius: 18px;
+  background: #FFFFFF;
+  color: var(--color-dark);
+  border: 1px solid rgba(112, 84, 73, 0.16);
+  box-shadow:
+    0 1px 3px rgba(73, 53, 45, 0.05),
+    0 -8px 24px -10px rgba(73, 53, 45, 0.12),
+    0 20px 40px -18px rgba(73, 53, 45, 0.16);
+  transform-origin: 50% 0;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scroll-stack-card__shade {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--color-primary);
+  opacity: var(--scroll-stack-dim, 0);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
