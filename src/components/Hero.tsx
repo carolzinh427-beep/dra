@@ -84,12 +84,12 @@ export const Hero: React.FC = () => {
               <div className="mobile-hero-name-overlay">
                 <h1
                   style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: 'clamp(2.1rem, 8.5vw, 2.85rem)',
-                    fontWeight: 600,
-                    lineHeight: 1.1,
+                    fontFamily: 'var(--font-hero)',
+                    fontSize: 'clamp(2.4rem, 9.5vw, 3.2rem)',
+                    fontWeight: 500,
+                    lineHeight: 1.05,
                     color: '#FFFFFF',
-                    letterSpacing: '-0.01em',
+                    letterSpacing: '0.01em',
                     margin: 0,
                     textShadow: '0 2px 14px rgba(25, 23, 21, 0.85)',
                   }}
@@ -132,9 +132,9 @@ export const Hero: React.FC = () => {
                   <span
                     style={{
                       fontSize: '0.75rem',
-                      fontFamily: 'var(--font-sans)',
+                      fontFamily: 'var(--font-serif)',
                       fontWeight: 600,
-                      letterSpacing: '0.18em',
+                      letterSpacing: '0.2em',
                       textTransform: 'uppercase',
                       color: 'var(--color-gold)',
                     }}
@@ -145,12 +145,12 @@ export const Hero: React.FC = () => {
 
                 <h1
                   style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: 'clamp(2.5rem, 5.2vw, 4.4rem)',
-                    fontWeight: 600,
-                    lineHeight: 1.12,
+                    fontFamily: 'var(--font-hero)',
+                    fontSize: 'clamp(2.9rem, 5.8vw, 4.85rem)',
+                    fontWeight: 500,
+                    lineHeight: 1.06,
                     color: '#FFFFFF',
-                    letterSpacing: '-0.01em',
+                    letterSpacing: '0.01em',
                     marginBottom: '1.5rem',
                   }}
                 >
@@ -159,13 +159,14 @@ export const Hero: React.FC = () => {
 
                 <p
                   style={{
-                    fontFamily: 'var(--font-serif)',
+                    fontFamily: 'var(--font-hero)',
                     fontStyle: 'italic',
-                    fontSize: 'clamp(1.15rem, 2.2vw, 1.45rem)',
+                    fontSize: 'clamp(1.25rem, 2.4vw, 1.65rem)',
                     lineHeight: 1.35,
                     color: 'var(--color-gold)',
                     marginBottom: '1.25rem',
                     fontWeight: 400,
+                    letterSpacing: '0.01em',
                   }}
                 >
                   {siteConfig.doctor.institutionalPhrase}

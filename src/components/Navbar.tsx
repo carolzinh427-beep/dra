@@ -8,8 +8,8 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Quando rolar além de 80px do topo, ativa o fundo sólido sofisticado
-      if (window.scrollY > 80) {
+      // Quando rolar além de 60px do topo, ajusta o reflexo vidralítico
+      if (window.scrollY > 60) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -54,11 +54,16 @@ export const Navbar: React.FC = () => {
           right: 0,
           zIndex: 1000,
           paddingTop: 'env(safe-area-inset-top, 0px)',
-          backgroundColor: isScrolled ? 'rgba(73, 53, 45, 0.72)' : 'rgba(73, 53, 45, 0.3)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(184, 154, 101, 0.2)',
-          transition: 'background-color 0.3s ease, border-color 0.3s ease',
+          backgroundColor: isScrolled ? 'rgba(73, 53, 45, 0.32)' : 'rgba(255, 255, 255, 0.04)',
+          backdropFilter: 'blur(20px) saturate(190%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(190%)',
+          borderBottom: isScrolled
+            ? '1px solid rgba(184, 154, 101, 0.28)'
+            : '1px solid rgba(255, 255, 255, 0.12)',
+          boxShadow: isScrolled
+            ? '0 8px 32px 0 rgba(25, 23, 21, 0.22)'
+            : '0 4px 30px rgba(0, 0, 0, 0.06)',
+          transition: 'background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
         }}
       >
         <div
@@ -70,7 +75,7 @@ export const Navbar: React.FC = () => {
             height: '76px',
           }}
         >
-          {/* Logo Tipográfico */}
+          {/* Logo Tipográfico com a fonte do Hero para o nome e fonte do site para a especialidade */}
           <a
             href="#inicio"
             aria-label="Dra Leticia Steegmuller Página Inicial"
@@ -82,18 +87,18 @@ export const Navbar: React.FC = () => {
           >
             <span
               style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1.15rem, 2.2vw, 1.4rem)',
-                fontWeight: 600,
+                fontFamily: 'var(--font-hero)',
+                fontSize: 'clamp(1.25rem, 2.4vw, 1.55rem)',
+                fontWeight: 500,
                 color: '#FFFFFF',
-                letterSpacing: '0.04em',
+                letterSpacing: '0.02em',
               }}
             >
               {siteConfig.doctor.shortName}
             </span>
             <span
               style={{
-                fontFamily: 'var(--font-sans)',
+                fontFamily: 'var(--font-serif)',
                 fontSize: '0.625rem',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
@@ -106,7 +111,7 @@ export const Navbar: React.FC = () => {
             </span>
           </a>
 
-          {/* Links Desktop */}
+          {/* Links Desktop com tipografia de luxo Syne / Tenor Sans */}
           <nav
             aria-label="Navegação principal"
             style={{
@@ -121,15 +126,17 @@ export const Navbar: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 style={{
-                  color: 'rgba(255, 255, 255, 0.88)',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.05em',
+                  fontFamily: 'var(--font-serif)',
+                  color: 'rgba(255, 255, 255, 0.92)',
+                  fontSize: '0.8125rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
                   transition: 'color 0.2s ease',
                   position: 'relative',
                 }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--color-gold)')}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255, 255, 255, 0.88)')}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255, 255, 255, 0.92)')}
               >
                 {link.label}
               </a>
@@ -137,54 +144,33 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Botão de Agendamento Desktop */}
-          <div
-            className="desktop-cta"
-            style={{
-              display: 'none',
-              alignItems: 'center',
-            }}
-          >
+          <div style={{ display: 'none' }} className="desktop-cta">
             <a
               href="#contato"
-              aria-label="Agendar avaliação com a Dra Leticia"
+              className="btn-outline-gold"
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.625rem 1.25rem',
+                padding: '0.6rem 1.35rem',
                 fontSize: '0.75rem',
-                fontWeight: 500,
-                letterSpacing: '0.12em',
+                fontFamily: 'var(--font-serif)',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
-                color: '#FFFFFF',
-                backgroundColor: 'transparent',
-                border: '1px solid rgba(184, 154, 101, 0.7)',
-                borderRadius: '2px',
-                transition: 'all 0.25s ease',
+                fontWeight: 600,
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
               }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = 'var(--color-gold)';
-                el.style.borderColor = 'var(--color-gold)';
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.backgroundColor = 'transparent';
-                el.style.borderColor = 'rgba(184, 154, 101, 0.7)';
-              }}
+              aria-label="Ir para agendamento"
             >
               Agendar Avaliação
-              <ArrowUpRight size={13} strokeWidth={2} style={{ color: 'var(--color-gold)' }} />
+              <ArrowUpRight size={14} />
             </a>
           </div>
 
-          {/* Toggle Menu Mobile */}
+          {/* Botão Hambúrguer Mobile */}
           <button
             type="button"
-            className="mobile-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-label={isMobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -192,15 +178,20 @@ export const Navbar: React.FC = () => {
               width: '42px',
               height: '42px',
               color: '#FFFFFF',
-              borderRadius: '4px',
+              backgroundColor: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(184, 154, 101, 0.25)',
+              borderRadius: '3px',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
             }}
+            className="mobile-toggle"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </header>
 
-      {/* Painel Mobile Suspenso/Modal */}
+      {/* Painel Mobile Suspenso Vidralítico */}
       {isMobileMenuOpen && (
         <div
           role="dialog"
@@ -210,11 +201,13 @@ export const Navbar: React.FC = () => {
             position: 'fixed',
             inset: 0,
             zIndex: 999,
-            backgroundColor: '#49352D',
+            backgroundColor: 'rgba(73, 53, 45, 0.85)',
+            backdropFilter: 'blur(28px) saturate(190%)',
+            WebkitBackdropFilter: 'blur(28px) saturate(190%)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            paddingTop: 'calc(80px + env(safe-area-inset-top, 0px))',
+            paddingTop: 'calc(86px + env(safe-area-inset-top, 0px))',
             paddingBottom: 'calc(2rem + env(safe-area-inset-bottom, 0px))',
             paddingLeft: '1.5rem',
             paddingRight: '1.5rem',
@@ -236,18 +229,18 @@ export const Navbar: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.625rem',
-                  fontWeight: 400,
+                  fontSize: '1.5rem',
+                  fontWeight: 600,
                   color: '#FFFFFF',
                   paddingBottom: '0.75rem',
-                  borderBottom: '1px solid rgba(184, 154, 101, 0.15)',
+                  borderBottom: '1px solid rgba(184, 154, 101, 0.2)',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                 }}
               >
                 <span>{link.label}</span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--color-gold)', fontFamily: 'var(--font-sans)' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--color-gold)', fontFamily: 'var(--font-serif)' }}>
                   0{siteConfig.navLinks.indexOf(link) + 1}
                 </span>
               </a>
@@ -273,6 +266,10 @@ export const Navbar: React.FC = () => {
                 width: '100%',
                 padding: '1rem',
                 fontSize: '0.8125rem',
+                fontFamily: 'var(--font-serif)',
+                fontWeight: 600,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
               }}
             >
               Agendar Avaliação pelo WhatsApp
